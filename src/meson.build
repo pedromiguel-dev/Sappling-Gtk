@@ -1,8 +1,11 @@
 sappling_sources = [
   'main.vala',
   'application.vala',
+  'Widgets/comp/HeaderBar.vala',
   'Widgets/window.vala',
-  'Widgets/Home.vala'
+  'Widgets/Leaflet.vala',
+  'Widgets/Home.vala',
+  'Widgets/Products.vala'
 ]
 
 sappling_deps = [

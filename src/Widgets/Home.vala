@@ -1,16 +1,22 @@
 namespace Sappling {
     public class Home : Gtk.Box {
         public Home (){
-
         }
         construct {
-            hexpand = true;
             buildui();
         }
 
+        private void buildui () {
+            hexpand = false;
+            set_orientation (Gtk.Orientation.VERTICAL);
+            set_spacing (0);
+            append(banner());
+            css_classes = {"panel_max"};
+        }
         private Adw.Clamp banner () {
             var clamp = new Adw.Clamp() {
                 hexpand = true,
+                vexpand = false,
                 maximum_size = 560,
                 css_classes = {"banner", "main_green"}
             };
@@ -31,6 +37,7 @@ namespace Sappling {
                     icon_name = "system-log-out-symbolic",
                 },
             };
+            button_leave.set_action_name ("win.products");
             button_leave_box.append (button_leave);
             //button box ------
 
@@ -49,9 +56,6 @@ namespace Sappling {
 
             clamp.set_child (box);
             return clamp;
-        }
-        private void buildui () {
-            append(banner());
         }
     }
 }

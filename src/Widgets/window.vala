@@ -19,31 +19,33 @@
  */
 
 namespace Sappling {
-    // [GtkTemplate (ui = "/com/github/pedromiguel_dev/Sappling/window.ui")]
     public class Window : Adw.ApplicationWindow {
-        // [GtkChild]
-        // private unowned Gtk.Label label;
-
+        private Sappling.Leaflet Leaflet;
         public Window (Gtk.Application app) {
             Object (application: app);
         }
         construct {
-            title = "Duel";
+            ActionEntry[] action_entries = {
+                { "products", this.on_prodduct_action },
+            };
+            this.add_action_entries (action_entries, this);
+
 	        set_default_size (380, 660);
             build_window();
         }
 
         private void build_window() {
-            var header_bar = new Adw.HeaderBar() {
-                css_classes = {"flat", "main_green"}
-            };
             var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            var home_page = new Sappling.Home();
 
-            box.append(header_bar);
-            box.append(home_page);
+            Leaflet = new Sappling.Leaflet();
+
+            box.append(Leaflet);
 
             set_content(box);
         }
+        public void on_prodduct_action(){
+            this.Leaflet.Leaflet.set_visible_child(this.Leaflet.Products);
+        }
     }
 }
+

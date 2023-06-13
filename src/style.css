@@ -1,0 +1,17 @@
+@define-color main-green #228B22;
+
+.banner {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+}
+
+.main_green {
+  background-color: @main-green;
+  color: white;
+}
+.padding_none {
+  border-radius: 50%;
+  padding: 20px;
+  filter: invert(100%);
+}

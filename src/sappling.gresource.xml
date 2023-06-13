@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/github/pedromiguel_dev/Sappling">
+    <file preprocess="xml-stripblanks">window.ui</file>
+    <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
+    <file>style.css</file>
+
+    <file>icons/person2.svg</file>
+  </gresource>
+</gresources>
+

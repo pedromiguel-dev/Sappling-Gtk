@@ -16,3 +16,8 @@
   padding: 20px;
   filter: invert(100%);
 }
+
+.button_main{
+  margin: 10px;
+  padding: 50px;
+}

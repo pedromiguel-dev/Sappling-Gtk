@@ -20,7 +20,8 @@
 
 namespace Sappling {
     public class Window : Adw.ApplicationWindow {
-        private Sappling.Leaflet Leaflet;
+        private Sappling.Leaflet MainLeaflet;
+
         public Window (Gtk.Application app) {
             Object (application: app);
         }
@@ -37,14 +38,14 @@ namespace Sappling {
         private void build_window() {
             var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
 
-            Leaflet = new Sappling.Leaflet();
+            MainLeaflet = new Sappling.Leaflet();
 
-            box.append(Leaflet);
+            box.append(MainLeaflet);
 
             set_content(box);
         }
         public void on_prodduct_action(){
-            this.Leaflet.Leaflet.set_visible_child(this.Leaflet.Products);
+            this.MainLeaflet.set_visible_child(this.MainLeaflet.Products);
         }
     }
 }

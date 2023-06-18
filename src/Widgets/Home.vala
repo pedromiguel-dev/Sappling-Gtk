@@ -20,35 +20,49 @@ namespace Sappling {
             grid.attach (CreateHomeButton("document-open-symbolic","teste"), 0, 0, 1, 1);
             grid.attach (CreateHomeButton(), 1, 0, 1, 1);
             grid.attach (CreateHomeButton(), 0, 1, 1, 1);
-            grid.attach (CreateHomeButton(), 1, 1, 1, 1);
 
             return grid;
         }
         private Adw.Clamp banner () {
+            //clamp
             var clamp = new Adw.Clamp() {
                 hexpand = true,
                 vexpand = false,
                 maximum_size = 560,
                 css_classes = {"banner", "main_green"},
-                child = new UiShell.HBox({
-                    new Gtk.Button() {
-                        child = new Gtk.Image.from_icon_name ("person2") { pixel_size = 40 },
-                        css_classes = {"padding_none"},
-                    },
-                    new UiShell.HBox ({
-                        new Gtk.Button() {
-                            valign = Gtk.Align.CENTER,
-                            css_classes = {"pill"},
-                            action_name = "win.products",
-                            child =  new Adw.ButtonContent () {
-                                halign = Gtk.Align.CENTER,
-                                label = "Leave",
-                                icon_name = "system-log-out-symbolic",
-                            },
-                        }
-                    }){ hexpand = true, halign = Gtk.Align.END},
-                }){hexpand= true, spacing = 10}
             };
+
+            //main box container for buttons
+            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL,10) {
+                hexpand = true,
+                vexpand = true,
+            };
+            //user button
+            var user_button = new Gtk.Button() {
+                child = new Gtk.Image.from_icon_name ("person2") { pixel_size = 40 },
+                css_classes = {"padding_none"},
+            };
+
+            //leave button
+            var leave_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
+                hexpand = true, halign = Gtk.Align.END
+            };
+                var leave_button = new Gtk.Button() {
+                    valign = Gtk.Align.CENTER,
+                    css_classes = {"pill"},
+                    action_name = "win.products",
+                    child =  new Adw.ButtonContent () {
+                        halign = Gtk.Align.CENTER,
+                        label = "Leave",
+                        icon_name = "system-log-out-symbolic",
+                    },
+                };  leave_box.append (leave_button);
+
+            //append to main box
+            box.append (user_button);
+            box.append (leave_box);
+
+            clamp.set_child (box);
             return clamp;
         }
 
@@ -69,15 +83,7 @@ namespace Sappling {
             box.append (button_products);
             box.append (button_label);
 
-            return new UiShell.VBox({
-                new Gtk.Button () {
-                    icon_name = icon_name,
-                    css_classes = {"button_main", "main_green"}
-                },
-                new Gtk.Label(label) {
-                    margin_top = 0,
-                }
-            });
+            return box;
         }
     }
 }
